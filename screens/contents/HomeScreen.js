@@ -9,6 +9,7 @@ import { CustomButton } from '../../utilities/CustomButton';
 
 export default function HomeScreen({ navigation, route }) {
 
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
     useEffect(() => {
@@ -21,6 +22,7 @@ export default function HomeScreen({ navigation, route }) {
                 .then(value => {
                     if (value != null) {
                         let user = JSON.parse(value);
+                        setName(user.Name);
                         setEmail(user.Email);
                     }
                 }
@@ -40,10 +42,12 @@ export default function HomeScreen({ navigation, route }) {
         }
     }
 
+    console.log(email);
+
     return (
         <View style={styles.container}>
             <Text style={styles.text}>
-                Welcome {email}.
+                Welcome {name}.
             </Text>
             <CustomButton
                 style={styles.button}

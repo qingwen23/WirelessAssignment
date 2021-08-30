@@ -86,10 +86,14 @@ const SignupScreen = ({ navigation }) => {
 
   const setUser = async () => {
     try {
-      var user = {
+      var theUser = {
+        Name: userName,
         Email: userEmail,
+        Password: userPassword,
+        Age: userAge,
+        Gender: userGender
       }
-      await AsyncStorage.setItem('UserData', JSON.stringify(user));
+      await AsyncStorage.setItem('UserData', JSON.stringify(theUser));
     } catch (error) {
       console.log(error);
     }
